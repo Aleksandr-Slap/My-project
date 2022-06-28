@@ -9,8 +9,11 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' 
   
   body
-    p.notice: = notice
-    p.alert: = alert 
+    p.notice
+      = notice
+    p.alert 
+      = alert 
+      
     = yield 
   
 
