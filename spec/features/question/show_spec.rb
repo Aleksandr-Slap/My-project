@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-feature 'User can view list of questions', %q{
-  To solve their problem, the user wants to 
-  see a list of questions
-} do
+feature 'User can view question and its answers' do
 
-  given!(:questions) {create_list(:question, 3)}
-
-  scenario 'User sees list of questions' do 
-    visit questions_path
-
-    questions.each { |q| expect(page).to have_content q.body }
-  end  
-end  
+  given(:question) { create(:question) }
+  given!(:answers) {create_list(:answer, 3, question: question)}
+  
+  scenario 'User sees question and list answers' do
+    visit question_path(question)
+    
+    expect(page).to have_content question.title
+    expect(page).to have_content question.body
+    answers.each { |a| expect(page).to have_content a.body }
+  end
+end

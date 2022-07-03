@@ -15,7 +15,7 @@ RSpec.describe QuestionsController, type: :controller do
     
     it 'renders index view' do
       expect(response).to render_template :index
-    end   
+    end
   end
 
   describe 'GET #show' do
@@ -31,7 +31,7 @@ RSpec.describe QuestionsController, type: :controller do
   end  
 
   describe 'GET #new' do
-    before { login(user) }  
+    before { login(user) }
 
     before { get :new }
 
