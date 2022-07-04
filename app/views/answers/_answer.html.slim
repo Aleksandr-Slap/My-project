@@ -1,3 +1,4 @@
-ul
-  li
-    b= answer.body
+- if answer.persisted?
+  ul
+    li
+      b= answer.body

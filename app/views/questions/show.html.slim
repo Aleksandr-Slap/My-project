@@ -3,6 +3,20 @@ h1= @question.title
 p
   b= @question.body
 
+h2 Answers
+
 = render @question.answers
 
+
+= form_with model: [@question, @answer], local: true do |f|
+
+  = render "shared/errors", resource: @answer
+
+  p = f.label :body 
+  br = f.text_area :body
+
+  p = f.submit 'Create answer'
+
 = link_to "Back", questions_path
+
+  
