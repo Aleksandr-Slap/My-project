@@ -16,18 +16,17 @@ feature 'User can sing in', %q{
     # visit new_user_session_path                                           Используем хелпер background. Аналог "before" 26 строка так же 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_on 'Log in'
+    click_on 'Enter'
     
-    # save_and_open_page                                                    Можем открывать тестируемую страницу(gem 'launchy' в test)
     expect(page).to have_content 'Signed in successfully.'
   end
 
-  scenario 'Unregistered user tries to sing in' do 
+  scenario 'Unregistered user tries to sing in' do
     # visit new_user_session_path
     fill_in 'Email', with: 'foo@test.com'
     fill_in 'Password', with: '12345678'
-    click_on 'Log in'
+    click_on 'Enter'
     
     expect(page).to have_content 'Invalid Email or password.'
-  end  
+  end
 end

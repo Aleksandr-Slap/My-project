@@ -27,8 +27,8 @@ RSpec.describe QuestionsController, type: :controller do
 
     it 'renders show view' do 
       expect(response).to render_template :show
-    end  
-  end  
+    end
+  end
 
   describe 'GET #new' do
     before { login(user) }
@@ -110,14 +110,14 @@ RSpec.describe QuestionsController, type: :controller do
       it 'does not change question' do
         question.reload
 
-        expect(question.title).to eq 'MyString'
-        expect(question.body).to eq 'MyText'
+        expect(question.title).to eq question.title
+        expect(question.body).to eq question.body
       end  
       it 're-renders edit view' do 
         expect(response).to render_template :edit
-      end  
-    end  
-  end 
+      end
+    end
+  end
 
   describe 'DELETE #destroy' do 
     before { login(user) }
@@ -131,7 +131,6 @@ RSpec.describe QuestionsController, type: :controller do
     it 'redirect to index' do
       delete :destroy, params: { id: question }
       expect(response).to redirect_to question_path
-    end 
-  end  
+    end
+  end
 end
-

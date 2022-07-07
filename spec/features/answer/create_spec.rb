@@ -18,7 +18,7 @@ feature 'User can create answer', %q{
       visit question_path(question)
     end 
 
-    scenario 'write answer' do 
+    scenario 'write answer' do
       fill_in 'Body', with: 'Body answer'
       click_on 'Create answer'
 
@@ -39,8 +39,5 @@ feature 'User can create answer', %q{
 
     click_on 'Create answer'
     expect(page).to have_content 'You need to sign in or sign up before continuing.'
-  end  
+  end
 end
-
-
-  

@@ -3,11 +3,11 @@ FactoryBot.define do
     "#{n}answer"
   end  
   factory :answer do
-    association :question
+    question
     body
 
     trait :invalid do
       body { nil}
-    end  
+    end
   end
 end

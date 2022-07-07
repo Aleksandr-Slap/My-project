@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
   before_action :set_question, only: %i[ create ]
 
   def create
-    @answer = @question.answers.new(answer_params)
+    @answer = @question.answers.build(answer_params)
 
     if @answer.save
       redirect_to question_path(@question), notice: 'Your answer successfuly created.'
