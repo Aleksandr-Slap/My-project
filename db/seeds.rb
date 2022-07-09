@@ -21,15 +21,15 @@ questions = Question.create([
 p "Created #{Question.count} questions"
                              
 
-# Answer.create([
-#                {body: "Jo Rogan", question_id: questions[0].id, user_id: users[1].id},
-#                {body: "Matz", question_id: questions[0].id, user_id: users[1].id},
-#                {body: "Nil", question_id: questions[1].id, user_id: users[1].id},
-#                {body: "Null", question_id: questions[1].id, user_id: users[1].id},
-#                {body: "Незнаю", question_id: questions[3].id, user_id: users[0].id},
-#                {body: "Что то этакое", question_id: questions[3].id, user_id: users[0].id},
-#                {body: "Table", question_id: questions[2].id, user_id: users[0].id},
-#                {body: "TABLE", question_id: questions[2].id, user_id: users[0].id}
-#                ])
+Answer.create([
+               {body: "Jo Rogan", question_id: questions[0].id, user_id: users[1].id},
+               {body: "Matz", question_id: questions[0].id, user_id: users[1].id},
+               {body: "Nil", question_id: questions[1].id, user_id: users[1].id},
+               {body: "Null", question_id: questions[1].id, user_id: users[1].id},
+               {body: "Незнаю", question_id: questions[3].id, user_id: users[0].id},
+               {body: "Что то этакое", question_id: questions[3].id, user_id: users[0].id},
+               {body: "Table", question_id: questions[2].id, user_id: users[0].id},
+               {body: "TABLE", question_id: questions[2].id, user_id: users[0].id}
+               ])
 
-# p "Created #{Answer.count} answers"
+p "Created #{Answer.count} answers"

@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe AnswersController, type: :controller do
   let(:user) { create(:user) }
   let(:question) { create(:question, user: user ) }
-  before { login(user) }
 
   describe 'Post #create' do
+    before { login(user) }
 
     context 'with valid attributes' do
       it 'save a new answer in the database' do
@@ -25,6 +25,16 @@ RSpec.describe AnswersController, type: :controller do
         post :create, params: {question_id: question, answer: attributes_for(:answer, :invalid) }
         expect(response).to render_template 'questions/show'
       end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    before { login(user) }
+
+    let!(:answer) { create(:answer, question: question, user: user)}
+
+    it 'delete in answer' do 
+      expect {delete :destroy, params: { id: answer } }.to change(Answer, :count).by(-1)
     end
   end
 end

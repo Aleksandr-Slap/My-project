@@ -3,6 +3,7 @@ FactoryBot.define do
     "#{n}answer"
   end  
   factory :answer do
+    user
     question
     body
 

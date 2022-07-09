@@ -2,3 +2,5 @@
   ul
     li
       b= answer.body
+      - if current_user&.answers&.include?answer
+        = link_to 'Delete answer', answer_path(answer), method: :delete, data: {confirm: ('Delete?')}
