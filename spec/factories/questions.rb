@@ -3,7 +3,8 @@ FactoryBot.define do
     "#{n}Question title"
   end
   factory :question do
-    body  { "Question body"}
+    user
+    body  { "Question body" }
     title
   end
 
