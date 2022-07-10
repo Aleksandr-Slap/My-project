@@ -1,26 +1,32 @@
 class AnswersController < ApplicationController
-
-  before_action :set_question, only: %i[ new create ]
-
-  def new
-    @answer = @question.answers.new
-  end 
+  before_action :authenticate_user!
+  before_action :load_question, only: %i[ create ]
+  before_action :load_answer, only: %i[ destroy ]
 
   def create
-    @answer = @question.answers.new(answer_params)
+    @answer = @question.answers.create(answer_params.merge(user: current_user))
 
     if @answer.save
-      redirect_to answer_path(@answer)
+      redirect_to question_path(@question), notice: 'Your answer successfuly created.'
     else
-      render :new
-    end  
-  end 
+      render "questions/show"
+    end
+  end
+
+  def destroy
+    @answer.destroy
+    redirect_to @answer.question, notice: 'Answer successfully deleted.'
+  end  
 
   private
 
-  def set_question
+  def load_question
     @question = Question.find(params[:question_id])
-  end  
+  end
+
+  def load_answer
+    @answer = Answer.find(params[:id])
+  end   
 
   def answer_params
     params.require(:answer).permit(:body)
